@@ -79,43 +79,12 @@ void Player :: updatePlayerAmount(int q)
 }
 
 //Entity Store Manager
-class FileManager
-{
-private:
-    char fileName[SIZE];
-public:
-    FileManager(char fname[]);
-    void addRecord(Player *p);
-    void modifyRecord(Player *p);
-    Player * searchRecord(char nm[]);
-};
 
-FileManager :: FileManager(char fname[])
-{
-    strcpy(fileName, fname);
-}
-
-void FileManager :: addRecord(Player* p)
-{
-    if(searchRecord(p->getPlayerName()) != NULL)
-    {
         cout<<newMessage<<"Player Name Already In Use";
         return;
     }
 
-    ofstream fout;
-    fout.open(fileName, ios::binary|ios::app);
-
-    if(!fout)
-    {
-        cout<<newMessage<<"Add Record Failed";
-        return;
-    }
-
-    fout.write((char * )p, sizeof(Player));
-    fout.flush();
-    fout.close();
-
+    
 }
 
 void FileManager :: modifyRecord(Player* p)
@@ -125,8 +94,7 @@ void FileManager :: modifyRecord(Player* p)
 
     if(!fio)
     {
-        cout<<newMessage<<"Modify Record Failed";
-        return;
+        cout<<newMessage<<"Modif return;
     }
 
     Player temp;
@@ -356,7 +324,7 @@ int main()
                 cin>>amt;
 
                 pl.set(nm, amt);
-                fmgr.addRecord(&pl);
+                
                 break;
             case 2:
                 g.play();
